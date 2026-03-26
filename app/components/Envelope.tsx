@@ -76,12 +76,6 @@ export default function Envelope() {
     <source src="/envelope.mp4" type="video/mp4" />
   </video>
 
-  {/* 👇 TEXT */}
-  {!isPlaying && (
-    <div className="absolute text-gray-700 text-lg font-serif">
-      Tap to open 💌
-    </div>
-  )}
 
 </div>
   );
