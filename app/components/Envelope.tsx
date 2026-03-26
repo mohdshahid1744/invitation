@@ -60,6 +60,7 @@ export default function Envelope() {
         }`}
         muted
         playsInline
+        poster="/envolope.png"
       >
         <source src="/envelope.mp4" type="video/mp4" />
       </video>
