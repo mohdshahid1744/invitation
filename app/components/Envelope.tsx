@@ -48,22 +48,41 @@ export default function Envelope() {
 
   return (
     <div
-      onClick={handleScreenClick}
-      className={`fixed inset-0 z-30 flex items-center justify-center bg-white transition-opacity duration-700 ${
-        fadeOverlay ? 'opacity-0 pointer-events-none' : 'opacity-100 cursor-pointer'
-      }`}
-    >
-      <video
-        ref={videoRef}
-        className={`w-full h-full object-cover transition-opacity duration-700 ${
-          fadeVideo ? 'opacity-0' : 'opacity-100'
-        }`}
-        muted
-        playsInline
-        poster="/envolope.png"
-      >
-        <source src="/envelope.mp4" type="video/mp4" />
-      </video>
+  onClick={handleScreenClick}
+  className={`fixed inset-0 z-30 flex items-center justify-center bg-white transition-opacity duration-700 ${
+    fadeOverlay ? 'opacity-0 pointer-events-none' : 'opacity-100 cursor-pointer'
+  }`}
+>
+
+  {/* 👇 FALLBACK IMAGE (always visible initially) */}
+  {!isPlaying && (
+    <img
+      src="/envelope.png"
+      alt="Envelope preview"
+      className="absolute inset-0 w-full h-full object-cover"
+    />
+  )}
+
+  {/* 👇 VIDEO */}
+  <video
+    ref={videoRef}
+    className={`w-full h-full object-cover transition-opacity duration-700 ${
+      fadeVideo ? 'opacity-0' : 'opacity-100'
+    }`}
+    muted
+    playsInline
+    preload="auto"
+  >
+    <source src="/envelope.mp4" type="video/mp4" />
+  </video>
+
+  {/* 👇 TEXT */}
+  {!isPlaying && (
+    <div className="absolute text-gray-700 text-lg font-serif">
+      Tap to open 💌
     </div>
+  )}
+
+</div>
   );
 }
