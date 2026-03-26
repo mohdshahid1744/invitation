@@ -51,7 +51,7 @@ function useCountdown(targetDate: Date) {
 ========================= */
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(true);
 
   useEffect(() => {
     // Treat tablet like mobile so the 3D model stays proportionate.
@@ -164,7 +164,7 @@ export default function Invitation() {
 
           {/* 3D Model */}
           <div className="absolute right-0 inset-y-0 w-[70%] sm:w-[80%] md:w-[55%] lg:w-1/2 pointer-events-none opacity-60 md:opacity-100">
-            {mounted && (
+            
               <Canvas
                 camera={{
                   fov: 45,
@@ -186,7 +186,7 @@ export default function Invitation() {
                   <Environment preset="sunset" />
                 </Suspense>
               </Canvas>
-            )}
+            
           </div>
 
           {/* Names */}
