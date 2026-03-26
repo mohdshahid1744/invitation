@@ -57,7 +57,7 @@ export default function Envelope() {
   {/* 👇 FALLBACK IMAGE (always visible initially) */}
   {!isPlaying && (
     <img
-      src="/envelope.png"
+      src="/envolope.png"
       alt="Envelope preview"
       className="absolute inset-0 w-full h-full object-cover"
     />
