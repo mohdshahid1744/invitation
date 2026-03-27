@@ -142,7 +142,7 @@ export default function Invitation() {
   const countdownRef = useScrollAnimation();
 
   return (
-    <div className="min-h-screen w-full font-sans">
+    <div className="min-h-screen w-full font-sans overflow-x-hidden">
       <main className="flex flex-col">
 
         {/* ================= HERO SECTION ================= */}
@@ -541,6 +541,95 @@ export default function Invitation() {
             </div>
           </div>
         </section>
+        {/* ================= SECTION 5: CLOSING ================= */}
+        <div className="w-full overflow-hidden leading-none pointer-events-none -mt-1 bg-[#f7ecd0]">
+  <svg
+    className="block w-full h-[70px] md:h-[90px]"
+    viewBox="0 0 1440 320"
+    preserveAspectRatio="none"
+  >
+    <defs>
+      <linearGradient id="beigeToWhiteWave" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#f7ecd0" />
+        <stop offset="100%" stopColor="#fffaf2" />
+      </linearGradient>
+    </defs>
+
+    {/* base fill */}
+    <rect x="0" y="0" width="1440" height="320" fill="#f7ecd0" />
+
+    {/* wave */}
+    <path
+      fill="url(#beigeToWhiteWave)"
+      d="M0,192 C320,120 520,260 840,180 C1100,120 1300,200 1440,160 L1440,320 L0,320 Z"
+    />
+  </svg>
+</div>
+<div className="relative h-0">
+  <div
+    className="absolute top-0 left-0 w-full z-20 pointer-events-none"
+    style={{
+      animation: 'carMove 60s linear infinite',
+    }}
+  >
+    <div className="relative w-full h-[120px]">
+      <img
+        src="/doodle3.png"
+        alt="Car doodle"
+        className="absolute top-[20%] -translate-y-1/2 max-w-[140px] md:max-w-[180px] drop-shadow-2xl"
+      />
+    </div>
+  </div>
+
+  <style>
+    {`
+      @keyframes carMove {
+        0% {
+          transform: translateX(110vw);
+        }
+        100% {
+          transform: translateX(-30vw);
+        }
+      }
+    `}
+  </style>
+</div>
+<section className="relative py-20 px-4 text-center overflow-hidden">
+
+{/* 🌸 Background Image */}
+<img
+  src="/section5.png"  // <-- save the generated image as this
+  alt="Background"
+  className="absolute inset-0 w-full h-full object-cover opacity-90"
+/>
+
+{/* Overlay for readability */}
+<div className="absolute inset-0 bg-white/70" />
+
+{/* Content */}
+<div className="relative z-10 max-w-3xl mx-auto">
+
+  <h2
+    className="text-5xl md:text-7xl text-[#8a6a3b] mb-6"
+    style={{ fontFamily: 'var(--font-great-vibes)' }}
+  >
+    With Love
+  </h2>
+
+  <p className="text-xl md:text-2xl text-[#8a6a3b] font-serif mb-4">
+    Shahana & Shareef
+  </p>
+
+  <p className="text-base md:text-lg text-[#8a6a3b]/80 italic mb-6">
+    We look forward to celebrating with you 🤍
+  </p>
+
+  <p className="text-sm md:text-base text-[#8a6a3b]/70">
+    Keep us in your prayers 🤲
+  </p>
+
+</div>
+</section>
 
       </main>
     </div>
