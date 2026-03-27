@@ -6,9 +6,7 @@ import { Bounds, Environment, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import { Model3D } from '../components/Model3D';
 
-/* =========================
-   HOOK: Countdown
-========================= */
+
 function useCountdown(targetDate: Date) {
   const [timeLeft, setTimeLeft] = useState<{
     days: number;
@@ -46,15 +44,11 @@ function useCountdown(targetDate: Date) {
   return timeLeft;
 }
 
-/* =========================
-   HOOK: Mobile Check
-========================= */
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(true);
 
   useEffect(() => {
-    // Treat tablet like mobile so the 3D model stays proportionate.
     const check = () => setIsMobile(window.innerWidth < 1024);
 
     setMounted(true);
@@ -67,9 +61,6 @@ function useIsMobile() {
   return { isMobile, mounted };
 }
 
-/* =========================
-   HOOK: Scroll Animation
-========================= */
 function useScrollAnimation() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -90,9 +81,7 @@ function useScrollAnimation() {
   return { ref, isVisible };
 }
 
-/* =========================
-   COMPONENT: Auto Rotate
-========================= */
+
 function AutoRotate({
   children,
   isMobile,
@@ -119,9 +108,7 @@ function AutoRotate({
   );
 }
 
-/* =========================
-   MAIN COMPONENT
-========================= */
+
 export default function Invitation() {
   const venueName = 'Hajmus Convention Centre';
 
@@ -145,7 +132,6 @@ export default function Invitation() {
     <div className="min-h-screen w-full font-sans overflow-x-hidden">
       <main className="flex flex-col">
 
-        {/* ================= HERO SECTION ================= */}
         <section className="min-h-screen bg-gray-900 flex items-center justify-center relative overflow-hidden">
 
           {/* Background Video */}
@@ -159,7 +145,6 @@ export default function Invitation() {
             <source src="/my.mp4" type="video/mp4" />
           </video>
 
-          {/* Dark overlay to make the text readable */}
           <div className="absolute inset-0 bg-black/30 z-0" />
 
           {/* 3D Model */}
@@ -168,7 +153,6 @@ export default function Invitation() {
               <Canvas
                 camera={{
                   fov: 45,
-                  // Push camera a bit back on smaller screens to reduce perceived size.
                   position: isMobile ? [0, 0, 7] : [0, 0, 6],
                 }}
               >
@@ -237,8 +221,7 @@ export default function Invitation() {
             </div>
           </div>
         </section>
-
-        {/* ================= COUNTDOWN ================= */}
+        
         <section className="bg-[#7A8060] py-24 text-center relative">
           <div ref={countdownRef.ref} className="max-w-5xl mx-auto px-4">
             <h2
@@ -452,7 +435,7 @@ export default function Invitation() {
               Day Programme
             </h2>
             <p className="text-sm md:text-base text-[#8a6a3b]/90 tracking-wide mb-10 font-serif italic">
-              12 September 2026
+              16 may 2026
             </p>
 
             <div className="relative max-w-3xl mx-auto">
