@@ -156,7 +156,7 @@ export default function Invitation() {
             playsInline
             className="absolute inset-0 w-full h-full object-cover opacity-30"
           >
-            <source src="/background.mp4" type="video/mp4" />
+            <source src="/my.mp4" type="video/mp4" />
           </video>
 
           {/* Dark overlay to make the text readable */}
@@ -280,6 +280,26 @@ export default function Invitation() {
             )}
           </div>
         </section>
+        {/* Wave separator exactly between Section 2 and Section 3 */}
+        <div className="w-full overflow-hidden leading-none pointer-events-none -mt-1 bg-[#7A8060]">
+          <svg
+            className="block w-full h-[70px] md:h-[90px]"
+            viewBox="0 0 1440 320"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <linearGradient id="countdownToVenueWave" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#7A8060" />
+                <stop offset="100%" stopColor="#8FF2CD" />
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="1440" height="320" fill="#7A8060" />
+            <path
+              fill="url(#countdownToVenueWave)"
+              d="M0,192 C320,120 520,260 840,180 C1100,120 1300,200 1440,160 L1440,320 L0,320 Z"
+            />
+          </svg>
+        </div>
         <div className="relative h-0">
   <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 animate-float z-20 text-center">
     
@@ -298,7 +318,7 @@ export default function Invitation() {
         {/* ================= VENUE ================= */}
         <section className="bg-[#8FF2CD] py-10 md:py-16 text-center px-4">
           <h2
-            className="text-5xl md:text-7xl text-[#2E6B5B] mb-3"
+            className="text-5xl md:text-7xl text-[#2E6B5B] mb-3 mt-12 md:mt-14"
             style={{ fontFamily: 'var(--font-great-vibes)' }}
           >
             Venue Details
@@ -383,8 +403,30 @@ export default function Invitation() {
                 loading="lazy"
               />
             </div>
+
           </div>
         </section>
+
+        {/* Wave separator exactly between Section 3 and Section 4 */}
+        <div className="w-full overflow-hidden leading-none pointer-events-none -mt-1 bg-[#8FF2CD]">
+          <svg
+            className="block w-full h-[70px] md:h-[90px]"
+            viewBox="0 0 1440 320"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <linearGradient id="venueToProgrammeWave" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#8FF2CD" />
+                <stop offset="100%" stopColor="#f7ecd0" />
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="1440" height="320" fill="#8FF2CD" />
+            <path
+              fill="url(#venueToProgrammeWave)"
+              d="M0,192 C320,120 520,260 840,180 C1100,120 1300,200 1440,160 L1440,320 L0,320 Z"
+            />
+          </svg>
+        </div>
         <div className="relative h-0">
   <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 animate-float z-20 text-center">
     
@@ -403,8 +445,8 @@ export default function Invitation() {
         {/* ================= DAY PROGRAMME (Section 4) ================= */}
         <section className="bg-[#f7ecd0] py-16 px-4 text-center overflow-hidden relative">
           <div className="max-w-5xl mx-auto">
-            <h2
-              className="text-4xl md:text-7xl text-[#8a6a3b] mb-3"
+              <h2
+               className="text-4xl md:text-7xl text-[#8a6a3b] mb-3 mt-22 md:mt-24"
               style={{ fontFamily: 'var(--font-great-vibes)' }}
             >
               Day Programme
