@@ -59,7 +59,7 @@ export default function Envelope() {
     <img
       src="/envelope.PNG"
       alt="Envelope preview"
-      className="absolute inset-0 w-full h-full object-cover scale-81 md:scale-100"
+      className="absolute inset-0 w-full h-full object-cover scale-85 md:scale-100"
     />
   )}
 
