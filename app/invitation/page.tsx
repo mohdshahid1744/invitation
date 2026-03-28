@@ -237,7 +237,14 @@ export default function Invitation() {
         </section>
         
         <section className="bg-[#7A8060] py-24 text-center relative">
-          <div ref={countdownRef.ref} className="max-w-5xl mx-auto px-4">
+        <div
+  ref={countdownRef.ref}
+  className={`transition-all duration-1000 ${
+    countdownRef.isVisible
+      ? 'opacity-100 translate-y-0'
+      : 'opacity-0 translate-y-10'
+  }`}
+>
             <h2
               className="text-5xl md:text-7xl text-white mb-2"
               style={{ fontFamily: 'var(--font-great-vibes)' }}
