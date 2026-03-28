@@ -156,7 +156,13 @@ export default function Invitation() {
           <div className="absolute inset-0 bg-black/30 z-0" />
 
           {/* 3D Model */}
-          <div className="absolute right-0 inset-y-0 w-[70%] sm:w-[80%] md:w-[55%] lg:w-1/2 pointer-events-none opacity-60 md:opacity-100">
+          <div className="
+  absolute inset-0 
+  w-full h-full 
+  md:left-auto md:right-0 md:inset-y-0 md:w-1/2 
+  pointer-events-none 
+  opacity-70 md:opacity-100
+">
             
               <Canvas
                 camera={{
