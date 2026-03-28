@@ -98,10 +98,8 @@ function AutoRotate({
   return (
     <group
       ref={ref}
-      // Smaller on phones/tablets so the model doesn't overflow.
-      scale={isMobile ? 0.8 : 1.2}
-      // Move up a bit and slightly toward center for phone/tablet framing.
-      position={isMobile ? [0.1, -0.2, 0] : [0, 0, 0]}
+      scale={isMobile ? 1.4 : 1.2}
+position={isMobile ? [0, -0.5, 0] : [0, 0, 0]}
     >
       {children}
     </group>
@@ -127,6 +125,16 @@ export default function Invitation() {
 
   const namesRef = useScrollAnimation();
   const countdownRef = useScrollAnimation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+  
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen w-full font-sans overflow-x-hidden">

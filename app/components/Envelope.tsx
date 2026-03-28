@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Envelope() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -26,6 +27,19 @@ export default function Envelope() {
       }, 2000);
     }
   };
+  useEffect(() => {
+    if (!fadeOverlay) {
+      // While envelope is visible → lock scroll
+      document.body.style.overflow = 'hidden';
+    } else {
+      // When envelope disappears → enable scroll
+      document.body.style.overflow = 'auto';
+    }
+  
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [fadeOverlay]);
 
   useEffect(() => {
     // Ensure video is paused initially
@@ -62,6 +76,55 @@ export default function Envelope() {
       className="absolute inset-0 w-full h-full object-cover "
     />
   )}
+  {!isPlaying && (
+  <motion.div
+    className="absolute inset-0 flex flex-col items-center justify-center"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 1 }}
+  >
+    {/* Ripple effect */}
+    <motion.div
+      className="absolute w-16 h-16 rounded-full bg-white/20 backdrop-blur-md"
+      animate={{ scale: [1, 1.8], opacity: [0.5, 0] }}
+      transition={{
+        duration: 1.6,
+        repeat: Infinity,
+        ease: 'easeOut',
+      }}
+    />
+
+    {/* Glass Finger */}
+    <motion.div
+  animate={{ y: [0, -12, 0] }}
+  transition={{
+    duration: 1.4,
+    repeat: Infinity,
+    ease: 'easeInOut',
+  }}
+  className="relative w-16 h-16 flex items-center justify-center backdrop-blur-xl bg-white/10 border border-white/20 rounded-full shadow-lg"
+>
+  <img
+    src="/finger.png"
+    alt="Tap finger"
+    className="w-16 h-16 object-contain opacity-90"
+  />
+</motion.div>
+
+    {/* Text */}
+    <motion.p
+      className="mt-3 text-sm text-white/80 italic font-serif"
+      animate={{ opacity: [0.4, 1, 0.4] }}
+      transition={{
+        duration: 1.6,
+        repeat: Infinity,
+        ease: 'easeInOut',
+      }}
+    >
+      Tap to open
+    </motion.p>
+  </motion.div>
+)}
 
   {/* 👇 VIDEO */}
   <video
