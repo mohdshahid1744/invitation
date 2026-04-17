@@ -123,15 +123,7 @@ export default function Invitation() {
   const timeLeft = useCountdown(targetDate);
   const { isMobile, mounted } = useIsMobile();
   const [isMuted, setIsMuted] = useState(false);
-  const [showSoundBtn, setShowSoundBtn] = useState(false);
-  useEffect(() => {
-    const flag = sessionStorage.getItem("showSoundControl");
-  
-    if (flag === "true") {
-      setShowSoundBtn(true);
-    }
-  
-  }, []);
+
   const namesRef = useScrollAnimation();
   const countdownRef = useScrollAnimation();
   useEffect(() => {
@@ -665,7 +657,7 @@ export default function Invitation() {
 </section>
 
       </main>
-      {showSoundBtn && (
+
      <div className="fixed bottom-6 right-6 z-20">
      <button
        onClick={toggleSound}
@@ -700,7 +692,7 @@ export default function Invitation() {
        )}
      </button>
    </div>
-)}
+
     </div>
   );
 }

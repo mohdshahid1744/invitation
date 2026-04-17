@@ -11,12 +11,7 @@ export default function Envelope() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const fadeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const overlayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  useEffect(() => {
-    if (!sessionStorage.getItem("visited")) {
-      sessionStorage.removeItem("showSoundControl");
-      sessionStorage.setItem("visited", "true");
-    }
-  }, []);
+
   const handleScreenClick = () => {
     if (!isPlaying && videoRef.current) {
       setIsPlaying(true);
@@ -33,9 +28,7 @@ export default function Envelope() {
   
         overlayTimeoutRef.current = setTimeout(() => {
           setFadeOverlay(true);
-        
-          // ✅ ADD THIS LINE
-          sessionStorage.setItem("showSoundControl", "true");
+
         
         }, 700);
       }, 2000);
