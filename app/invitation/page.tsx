@@ -5,8 +5,8 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Bounds, Environment, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import { Model3D } from '../components/Model3D';
-
-
+import { getAudio } from '../utils/audio';
+import FlipCard from './flipCard';
 function useCountdown(targetDate: Date) {
   const [timeLeft, setTimeLeft] = useState<{
     days: number;
@@ -122,7 +122,16 @@ export default function Invitation() {
 
   const timeLeft = useCountdown(targetDate);
   const { isMobile, mounted } = useIsMobile();
-
+  const [isMuted, setIsMuted] = useState(false);
+  const [showSoundBtn, setShowSoundBtn] = useState(false);
+  useEffect(() => {
+    const flag = sessionStorage.getItem("showSoundControl");
+  
+    if (flag === "true") {
+      setShowSoundBtn(true);
+    }
+  
+  }, []);
   const namesRef = useScrollAnimation();
   const countdownRef = useScrollAnimation();
   useEffect(() => {
@@ -135,7 +144,21 @@ export default function Invitation() {
   
     window.scrollTo(0, 0);
   }, []);
-
+  useEffect(() => {
+    const audio = getAudio();
+    if (audio) {
+      setIsMuted(audio.muted);
+    }
+  }, []);
+  
+  const toggleSound = () => {
+    const audio = getAudio();
+    if (!audio) return;
+  
+    const newMuted = !audio.muted;
+    audio.muted = newMuted;
+    setIsMuted(newMuted);
+  };
   return (
     <div className="min-h-screen w-full font-sans overflow-x-hidden">
       <main className="flex flex-col">
@@ -196,32 +219,32 @@ export default function Invitation() {
                 : 'opacity-0 translate-y-8'
             }`}
           >
-            <p className="text-sm tracking-[0.35em] uppercase text-[#9AAFA3] mb-6 font-serif">
+            <p className="text-sm tracking-[0.35em] uppercase text-[#E8E2D6] mb-6 font-serif">
               The Wedding of
             </p>
 
             <h1
-              className="text-6xl md:text-7xl lg:text-8xl text-[#8B5A6A] mb-2"
+              className="text-6xl md:text-7xl lg:text-8xl text-[#D8A7B1] mb-2"
               style={{ fontFamily: 'var(--font-great-vibes)' }}
             >
               Shahana
             </h1>
 
             <p
-              className="text-2xl md:text-3xl text-rose-800 mb-2"
+              className="text-2xl md:text-3xl text-[#D8A7B1]"
               style={{ fontFamily: 'var(--font-great-vibes)' }}
             >
               &amp;
             </p>
 
             <h2
-              className="text-6xl md:text-7xl lg:text-8xl text-[#8B5A6A] mb-4"
+              className="text-6xl md:text-7xl lg:text-8xl text-[#D8A7B1] mb-4"
               style={{ fontFamily: 'var(--font-great-vibes)' }}
             >
               Shareef
             </h2>
 
-            <p className="text-lg md:text-xl text-[#9AAFA3] mb-8 font-serif italic">
+            <p className="text-lg md:text-xl text-[#E8E2D6] mb-8 font-serif italic">
               16 May 2026
             </p>
 
@@ -256,32 +279,38 @@ export default function Invitation() {
             </p>
 
             {timeLeft && (
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 justify-items-center">
-                {(
-                  [
-                    { key: 'days', label: 'DAYS' },
-                    { key: 'hours', label: 'HOURS' },
-                    { key: 'minutes', label: 'MINUTES' },
-                    { key: 'seconds', label: 'SECONDS' },
-                  ] as const
-                ).map((item) => (
-                  <div
-                    key={item.key}
-                    className="w-full max-w-[170px] border border-white/25 rounded-xl px-6 py-8 bg-transparent"
-                  >
-                    <p
-                      className="text-4xl md:text-5xl text-white"
-                      style={{ fontFamily: 'var(--font-great-vibes)' }}
-                    >
-                      {timeLeft[item.key]}
-                    </p>
-                    <p className="mt-3 text-xs md:text-sm text-white/70 tracking-[0.25em] font-serif">
-                      {item.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            )}
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 justify-items-center">
+    {(
+      [
+        { key: 'days', label: 'DAYS' },
+        { key: 'hours', label: 'HOURS' },
+        { key: 'minutes', label: 'MINUTES' },
+        { key: 'seconds', label: 'SECONDS' },
+      ] as const
+    ).map((item) => (
+      <div
+        key={item.key}
+        className="w-full max-w-[170px] rounded-2xl px-6 py-8 
+        bg-white/10 backdrop-blur-md 
+        border border-white/20 
+        shadow-lg text-center"
+      >
+        {/* NUMBER */}
+        <p
+          className="text-5xl md:text-6xl text-[#F5F1E8] font-semibold tracking-wide"
+          style={{ fontFamily: 'Playfair Display, serif' }}
+        >
+          {String(timeLeft[item.key]).padStart(2, '0')}
+        </p>
+
+        {/* LABEL */}
+        <p className="mt-3 text-xs md:text-sm text-[#D8A7B1] tracking-[0.3em] font-serif">
+          {item.label}
+        </p>
+      </div>
+    ))}
+  </div>
+)}
           </div>
         </section>
         {/* Wave separator exactly between Section 2 and Section 3 */}
@@ -636,6 +665,42 @@ export default function Invitation() {
 </section>
 
       </main>
+      {showSoundBtn && (
+     <div className="fixed bottom-6 right-6 z-20">
+     <button
+       onClick={toggleSound}
+       className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center transition hover:scale-105 active:scale-95"
+     >
+       {isMuted ? (
+         // 🔇 Muted
+         <svg
+         className="w-5 h-5 text-gray-600"
+         fill="none"
+         stroke="currentColor"
+         strokeWidth="1.8"
+         viewBox="0 0 24 24"
+       >
+         <path d="M11 5L6 9H3v6h3l5 4V5z" />
+         <line x1="15" y1="9" x2="20" y2="14" />
+         <line x1="20" y1="9" x2="15" y2="14" />
+       </svg>
+        
+       ) : (
+         // 🔊 Sound
+         <svg
+         className="w-5 h-5 text-gray-600"
+         fill="none"
+         stroke="currentColor"
+         strokeWidth="1.8"
+         viewBox="0 0 24 24"
+       >
+         <path d="M11 5L6 9H3v6h3l5 4V5z" />
+         <path d="M15 9a3 3 0 010 6" />
+       </svg>
+       )}
+     </button>
+   </div>
+)}
     </div>
   );
 }

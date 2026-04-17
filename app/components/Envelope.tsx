@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { getAudio } from "../utils/audio";
 
 export default function Envelope() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -10,20 +11,33 @@ export default function Envelope() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const fadeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const overlayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
+  useEffect(() => {
+    if (!sessionStorage.getItem("visited")) {
+      sessionStorage.removeItem("showSoundControl");
+      sessionStorage.setItem("visited", "true");
+    }
+  }, []);
   const handleScreenClick = () => {
     if (!isPlaying && videoRef.current) {
       setIsPlaying(true);
+  
+      const audio = getAudio();
+      audio?.play().catch(() => {
+        console.log("Audio failed");
+      });
+  
       videoRef.current.play();
-
-      // After 2s: fade video to white (keep white background)
+  
       fadeTimeoutRef.current = setTimeout(() => {
         setFadeVideo(true);
-
-        // Then after white flash, fade the overlay itself to reveal invitation
+  
         overlayTimeoutRef.current = setTimeout(() => {
           setFadeOverlay(true);
-        }, 700); // match CSS transition duration
+        
+          // ✅ ADD THIS LINE
+          sessionStorage.setItem("showSoundControl", "true");
+        
+        }, 700);
       }, 2000);
     }
   };
@@ -67,6 +81,7 @@ export default function Envelope() {
     fadeOverlay ? 'opacity-0 pointer-events-none' : 'opacity-100 cursor-pointer'
   }`}
 >
+
 
   {/* 👇 FALLBACK IMAGE (always visible initially) */}
   {!isPlaying && (
