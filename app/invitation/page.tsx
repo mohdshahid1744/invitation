@@ -180,6 +180,7 @@ export default function Invitation() {
 ">
             
               <Canvas
+              style={{ pointerEvents: 'none' }}
                 camera={{
                   fov: 45,
                   position: isMobile ? [0, 0, 7] : [0, 0, 6],
