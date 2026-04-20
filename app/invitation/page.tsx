@@ -252,59 +252,43 @@ export default function Invitation() {
         </section>
         
         <section className="bg-[#7A8060] py-24 text-center relative">
-        <div
-  ref={countdownRef.ref}
-  className={`transition-all duration-1000 ${
-    countdownRef.isVisible
-      ? 'opacity-100 translate-y-0'
-      : 'opacity-0 translate-y-10'
-  }`}
->
-            <h2
-              className="text-5xl md:text-7xl text-white mb-2"
-              style={{ fontFamily: 'var(--font-great-vibes)' }}
-            >
-              Countdown
-            </h2>
-            <p className="text-sm md:text-base text-[#9AAFA3]/90 tracking-wide mb-10 font-serif italic">
-              For the most special day of our lives
-            </p>
+  <div
+    ref={countdownRef.ref}
+    className={`transition-all duration-1000 ${
+      countdownRef.isVisible
+        ? 'opacity-100 translate-y-0'
+        : 'opacity-0 translate-y-10'
+    }`}
+  >
+    <h2
+      className="text-5xl md:text-7xl text-white mb-2"
+      style={{ fontFamily: 'var(--font-great-vibes)' }}
+    >
+      Countdown
+    </h2>
 
-            {timeLeft && (
-  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 justify-items-center">
-    {(
-      [
-        { key: 'days', label: 'DAYS' },
-        { key: 'hours', label: 'HOURS' },
-        { key: 'minutes', label: 'MINUTES' },
-        { key: 'seconds', label: 'SECONDS' },
-      ] as const
-    ).map((item) => (
-      <div
-        key={item.key}
-        className="w-full max-w-[170px] rounded-2xl px-6 py-8 
-        bg-white/10 backdrop-blur-md 
-        border border-white/20 
-        shadow-lg text-center"
-      >
-        {/* NUMBER */}
-        <p
-          className="text-5xl md:text-6xl text-[#F5F1E8] font-semibold tracking-wide"
-          style={{ fontFamily: 'Playfair Display, serif' }}
-        >
-          {String(timeLeft[item.key]).padStart(2, '0')}
-        </p>
+    <p className="text-sm md:text-base text-[#E8E2D6]/90 tracking-wide mb-10 font-serif italic">
+      For the most special day of our lives
+    </p>
 
-        {/* LABEL */}
-        <p className="mt-3 text-xs md:text-sm text-[#D8A7B1] tracking-[0.3em] font-serif">
-          {item.label}
-        </p>
-      </div>
-    ))}
-  </div>
-)}
+    {timeLeft && (
+      <div className="flex justify-center">
+        
+        <div className="w-full max-w-[260px] rounded-2xl px-8 py-10 ">
+
+          {/* 🔥 SCALE HERE */}
+          <div className="flex justify-center scale-[1.8] origin-center">
+            <FlipCard />
           </div>
-        </section>
+
+          
+
+        </div>
+
+      </div>
+    )}
+  </div>
+</section>
         {/* Wave separator exactly between Section 2 and Section 3 */}
         <div className="w-full overflow-hidden leading-none pointer-events-none -mt-1 bg-[#7A8060]">
           <svg

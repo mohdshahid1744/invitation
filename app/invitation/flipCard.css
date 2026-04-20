@@ -1,0 +1,137 @@
+/* *,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+} */
+
+body {
+	background-color: #a89032;
+	color: #D8A7B1;
+	
+}
+
+.main-heading{
+	font-size: clamp(2rem,3.5vw,2.7rem);
+	text-align: center;
+	letter-spacing: 1px;
+	margin-bottom: 1.5em;
+}
+
+.flip-card {
+	position: relative;
+	display: inline-flex;
+	flex-direction: column;
+	border-radius: 0.1em;
+	box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+	font-size: 1.5rem;
+}
+@media (min-width: 768px) {
+	.flip-card {
+		font-size: 2.5rem; /* desktop */
+	}
+}
+
+.top,
+.bottom,
+.flip-card.flip::after,
+.flip-card.flip::before {
+	padding: 0.25em;
+	height: 0.75em;
+	line-height: 1;
+	overflow: hidden;
+}
+
+.top,
+.flip-card.flip::before {
+	background: rgba(255, 255, 255, 0.08);
+	backdrop-filter: blur(6px);
+	border-top-left-radius: 0.3em;
+	border-top-right-radius: 0.3em;
+	border-bottom: 0.5px solid rgba(255, 255, 255, 0.2);
+}
+
+.bottom,
+.flip-card.flip::after {
+	display: flex;
+	align-items: flex-end;
+	background: rgba(255, 255, 255, 0.12);
+	backdrop-filter: blur(6px);
+	border-bottom-left-radius: 0.3em;
+	border-bottom-right-radius: 0.3em;
+}
+
+.flip-card.flip::before {
+	top: 0;
+	left: 0;
+	width: 100%;
+	content: attr(data-current-number);
+	position: absolute;
+	transform-origin: bottom;
+	animation: flip-bottom 500ms ease;
+	backface-visibility: hidden;
+}
+
+@keyframes flip-bottom {
+	100% {
+		transform: rotateX(180deg);
+	}
+}
+
+.flip-card.flip::after {
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	content: attr(data-next-number);
+	position: absolute;
+	transform-origin: top;
+	animation: flip-top 500ms ease;
+	transform: rotateX(180deg);
+	backface-visibility: hidden;
+}
+
+@keyframes flip-top {
+	100% {
+		transform: rotateX(0deg);
+	}
+}
+
+.countdown-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr); /* mobile */
+	gap: 1em;
+	justify-items: center;
+}
+
+@media (min-width: 768px) {
+	.countdown-container {
+		grid-template-columns: repeat(4, 1fr); /* desktop */
+		gap: 2em;
+	}
+}
+
+.countdown-cards {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.card-title {
+	font-size: 0.7rem;
+	letter-spacing: 2px;
+	margin-bottom: 0.5em;
+	color: #D8A7B1;
+}
+
+@media (min-width: 768px) {
+	.card-title {
+		font-size: 0.9rem;
+	}
+}
+
+.card-container {
+	display: flex;
+	gap: 0.125em;
+}
