@@ -69,7 +69,7 @@ flip(document.querySelector("[data-seconds-ones]"), seconds % 10);
       <div>
          <div className="countdown-container">
             <div className="countdown-cards">
-            <p className="mt-6 text-sm md:text-base text-[#D8A7B1] tracking-[0.35em] font-serif">
+            <p className="mt-6 text-xs md:text-sm text-[#D8A7B1] tracking-[0.25em] font-serif">
             DAYS
           </p>
                <div className='card-container'>
@@ -84,7 +84,7 @@ flip(document.querySelector("[data-seconds-ones]"), seconds % 10);
                </div>
             </div>
             <div className="countdown-cards">
-            <p className="mt-6 text-sm md:text-base text-[#D8A7B1] tracking-[0.35em] font-serif">
+            <p className="mt-6 text-xs md:text-sm text-[#D8A7B1] tracking-[0.25em] font-serif">
             HOURS
           </p>
                <div className='card-container' >
@@ -99,7 +99,7 @@ flip(document.querySelector("[data-seconds-ones]"), seconds % 10);
                </div>
             </div>
             <div className="countdown-cards">
-            <p className="mt-6 text-sm md:text-base text-[#D8A7B1] tracking-[0.35em] font-serif">
+            <p className="mt-6 text-xs md:text-sm text-[#D8A7B1] tracking-[0.25em] font-serif">
             MINUTES
           </p>
                <div className='card-container'>
@@ -114,7 +114,7 @@ flip(document.querySelector("[data-seconds-ones]"), seconds % 10);
                </div>
             </div>
             <div className="countdown-cards">
-            <p className="mt-6 text-sm md:text-base text-[#D8A7B1] tracking-[0.35em] font-serif">
+            <p className="mt-6 text-xs md:text-sm text-[#D8A7B1] tracking-[0.25em] font-serif">
             SECONDS
           </p>
                <div className='card-container'>
