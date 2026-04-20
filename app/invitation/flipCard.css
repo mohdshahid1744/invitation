@@ -7,11 +7,6 @@
 	font-family: Arial, Helvetica, sans-serif;
 } */
 
-body {
-	background-color: #a89032;
-	color: #D8A7B1;
-	
-}
 
 .main-heading{
 	font-size: clamp(2rem,3.5vw,2.7rem);

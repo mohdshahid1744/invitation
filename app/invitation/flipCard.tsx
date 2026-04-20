@@ -74,12 +74,12 @@ flip(document.querySelector("[data-seconds-ones]"), seconds % 10);
           </p>
                <div className='card-container'>
                   <div className="flip-card" data-days-tens>
-                     <div className="top">0</div>
-                     <div className="bottom">0</div>
+                     <div className="top text-[#D8A7B1]">0</div>
+                     <div className="bottom text-[#D8A7B1]">0</div>
                   </div>
                   <div className="flip-card" data-days-ones>
-    <div className="top">0</div>
-    <div className="bottom">0</div>
+    <div className="top text-[#D8A7B1]">0</div>
+    <div className="bottom text-[#D8A7B1]    ">0</div>
   </div>
                </div>
             </div>
@@ -89,12 +89,12 @@ flip(document.querySelector("[data-seconds-ones]"), seconds % 10);
           </p>
                <div className='card-container' >
                   <div className="flip-card" data-hours-tens>
-                     <div className="top">2</div>
-                     <div className="bottom">2</div>
+                     <div className="top text-[#D8A7B1]">2</div>
+                     <div className="bottom text-[#D8A7B1]">2</div>
                   </div>
                   <div className="flip-card" data-hours-ones>
-                     <div className="top">4</div>
-                     <div className="bottom">4</div>
+                     <div className="top text-[#D8A7B1]">4</div>
+                     <div className="bottom text-[#D8A7B1]">4</div>
                   </div>
                </div>
             </div>
@@ -104,12 +104,12 @@ flip(document.querySelector("[data-seconds-ones]"), seconds % 10);
           </p>
                <div className='card-container'>
                   <div className="flip-card" data-minutes-tens>
-                     <div className="top">0</div>
-                     <div className="bottom">0</div>
+                     <div className="top text-[#D8A7B1]">0</div>
+                     <div className="bottom text-[#D8A7B1]">0</div>
                   </div>
                   <div className="flip-card" data-minutes-ones>
-                     <div className="top">0</div>
-                     <div className="bottom">0</div>
+                     <div className="top text-[#D8A7B1]">0</div>
+                     <div className="bottom text-[#D8A7B1]">0</div>
                   </div>
                </div>
             </div>
@@ -119,12 +119,12 @@ flip(document.querySelector("[data-seconds-ones]"), seconds % 10);
           </p>
                <div className='card-container'>
                   <div className="flip-card" data-seconds-tens>
-                     <div className="top">0</div>
-                     <div className="bottom">0</div>
+                     <div className="top text-[#D8A7B1]">0</div>
+                     <div className="bottom text-[#D8A7B1]">0</div>
                   </div>
                   <div className="flip-card " data-seconds-ones>
-                     <div className="top">0</div>
-                     <div className="bottom">0</div>
+                     <div className="top text-[#D8A7B1]">0</div>
+                     <div className="bottom text-[#D8A7B1]">0</div>
                   </div>
                </div>
             </div>
