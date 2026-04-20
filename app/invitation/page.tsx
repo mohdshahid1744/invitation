@@ -248,7 +248,43 @@ export default function Invitation() {
                 className="max-w-[150px] md:max-w-[250px] h-auto drop-shadow-lg"
               />
             </div>
+     
           </div>
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center">
+
+<div className="arrow-float">
+  <svg
+    className="w-5 h-5 md:w-6 md:h-6 text-[#E8E2D6]/90"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    viewBox="0 0 24 24"
+  >
+    <path d="M6 9l6 6 6-6" />
+  </svg>
+</div>
+
+{/* ✅ Inline CSS */}
+<style>
+  {`
+    .arrow-float {
+      animation: floatArrow 1.6s ease-in-out infinite;
+    }
+
+    @keyframes floatArrow {
+      0%, 100% {
+        transform: translateY(0);
+        opacity: 0.7;
+      }
+      50% {
+        transform: translateY(10px);
+        opacity: 1;
+      }
+    }
+  `}
+</style>
+
+</div>
         </section>
         
         <section className="bg-[#7A8060] py-24 text-center relative">

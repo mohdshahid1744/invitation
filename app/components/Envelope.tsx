@@ -36,18 +36,15 @@ export default function Envelope() {
   };
   useEffect(() => {
     if (!fadeOverlay) {
-      // While envelope is visible → lock scroll
       document.body.style.overflow = 'hidden';
     } else {
-      // When envelope disappears → enable scroll
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = ''; // ✅ FIX
     }
   
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = ''; // ✅ FIX
     };
   }, [fadeOverlay]);
-
   useEffect(() => {
     // Ensure video is paused initially
     if (videoRef.current) {
