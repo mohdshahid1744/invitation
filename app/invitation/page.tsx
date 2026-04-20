@@ -7,6 +7,7 @@ import * as THREE from 'three';
 import { Model3D } from '../components/Model3D';
 import { getAudio } from '../utils/audio';
 import FlipCard from './flipCard';
+import Image from "next/image";
 function useCountdown(targetDate: Date) {
   const [timeLeft, setTimeLeft] = useState<{
     days: number;
@@ -618,13 +619,17 @@ export default function Invitation() {
       animation: 'carMove 60s linear infinite',
     }}
   >
-    <div className="relative w-full h-[120px]">
-      <img
-        src="/doodle3.png"
-        alt="Car doodle"
-        className="absolute top-[20%] -translate-y-1/2 max-w-[140px] md:max-w-[180px] drop-shadow-2xl"
-      />
-    </div>
+   <div className="relative w-full h-[120px]">
+  <Image
+    src="/doodle3.png"
+    alt="Car doodle"
+    width={180}
+    height={120}
+    priority
+    className="absolute top-[20%] -translate-y-1/2 
+    drop-shadow-2xl mix-blend-multiply opacity-95"
+  />
+</div>
   </div>
 
   <style>
