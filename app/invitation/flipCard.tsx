@@ -69,62 +69,62 @@ flip(document.querySelector("[data-seconds-ones]"), seconds % 10);
       <div>
          <div className="countdown-container">
             <div className="countdown-cards">
-            <p className="mt-6 text-xs md:text-sm text-[#D8A7B1] tracking-[0.25em] font-serif">
+            <p className="mt-6 text-xs md:text-sm text-[#E3BCC4] tracking-[0.25em] font-serif">
             DAYS
           </p>
                <div className='card-container'>
-                  <div className="flip-card" data-days-tens>
-                     <div className="top text-[#D8A7B1]">0</div>
-                     <div className="bottom text-[#D8A7B1]">0</div>
+                  <div className="flip-card text-[#F5F1E8]" data-days-tens>
+                     <div className="top text-[#F5F1E8]">0</div>
+                     <div className="bottom text-[#F5F1E8]">0</div>
                   </div>
-                  <div className="flip-card" data-days-ones>
-    <div className="top text-[#D8A7B1]">0</div>
-    <div className="bottom text-[#D8A7B1]    ">0</div>
-  </div>
+                  <div className="flip-card text-[#F5F1E8]" data-days-ones>
+                  <div className="top text-[#F5F1E8]">0</div>
+                  <div className="bottom text-[#F5F1E8]    ">0</div>
+               </div>
                </div>
             </div>
             <div className="countdown-cards">
-            <p className="mt-6 text-xs md:text-sm text-[#D8A7B1] tracking-[0.25em] font-serif">
+            <p className="mt-6 text-xs md:text-sm text-[#E3BCC4] tracking-[0.25em] font-serif">
             HOURS
           </p>
                <div className='card-container' >
-                  <div className="flip-card" data-hours-tens>
-                     <div className="top text-[#D8A7B1]">2</div>
-                     <div className="bottom text-[#D8A7B1]">2</div>
+                  <div className="flip-card text-[#F5F1E8]" data-hours-tens>
+                     <div className="top text-[#F5F1E8]">2</div>
+                     <div className="bottom text-[#F5F1E8]">2</div>
                   </div>
-                  <div className="flip-card" data-hours-ones>
-                     <div className="top text-[#D8A7B1]">4</div>
-                     <div className="bottom text-[#D8A7B1]">4</div>
+                  <div className="flip-card text-[#F5F1E8]" data-hours-ones>
+                     <div className="top text-[#F5F1E8]">4</div>
+                     <div className="bottom text-[#F5F1E8]">4</div>
                   </div>
                </div>
             </div>
             <div className="countdown-cards">
-            <p className="mt-6 text-xs md:text-sm text-[#D8A7B1] tracking-[0.25em] font-serif">
+            <p className="mt-6 text-xs md:text-sm text-[#E3BCC4] tracking-[0.25em] font-serif">
             MINUTES
           </p>
                <div className='card-container'>
-                  <div className="flip-card" data-minutes-tens>
-                     <div className="top text-[#D8A7B1]">0</div>
-                     <div className="bottom text-[#D8A7B1]">0</div>
+                  <div className="flip-card text-[#F5F1E8]" data-minutes-tens>
+                     <div className="top text-[#F5F1E8]">0</div>
+                     <div className="bottom text-[#F5F1E8]">0</div>
                   </div>
-                  <div className="flip-card" data-minutes-ones>
-                     <div className="top text-[#D8A7B1]">0</div>
-                     <div className="bottom text-[#D8A7B1]">0</div>
+                  <div className="flip-card text-[#F5F1E8]" data-minutes-ones>
+                     <div className="top text-[#F5F1E8]">0</div>
+                     <div className="bottom text-[#F5F1E8]">0</div>
                   </div>
                </div>
             </div>
             <div className="countdown-cards">
-            <p className="mt-6 text-xs md:text-sm text-[#D8A7B1] tracking-[0.25em] font-serif">
+            <p className="mt-6 text-xs md:text-sm text-[#E3BCC4] tracking-[0.25em] font-serif">
             SECONDS
           </p>
                <div className='card-container'>
-                  <div className="flip-card" data-seconds-tens>
-                     <div className="top text-[#D8A7B1]">0</div>
-                     <div className="bottom text-[#D8A7B1]">0</div>
+                  <div className="flip-card text-[#F5F1E8]" data-seconds-tens>
+                        <div className="top text-[#F5F1E8]">0</div>
+                     <div className="bottom text-[#F5F1E8]">0</div>
                   </div>
-                  <div className="flip-card " data-seconds-ones>
-                     <div className="top text-[#D8A7B1]">0</div>
-                     <div className="bottom text-[#D8A7B1]">0</div>
+                  <div className="flip-card text-[#F5F1E8]" data-seconds-ones>
+                     <div className="top text-[#F5F1E8]">0</div>
+                     <div className="bottom text-[#F5F1E8]">0</div>
                   </div>
                </div>
             </div>
