@@ -475,19 +475,26 @@ export default function Invitation() {
           </svg>
         </div>
         <div className="relative h-0">
-  <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 animate-float z-20 text-center">
-    
-    <img
-      src="/doodle2.png"
-      alt="Couple doodle"
-      className="max-w-[180px] md:max-w-[150px] drop-shadow-2xl"
-    />
+        <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-center animate-float">
 
-    <p className="mt-3 inline-block px-3 py-1 bg-white/80 text-gray-700 text-sm italic font-serif rounded-full shadow">
-      let's celebrate ❤️
-    </p>
+        <Image
+  src="/doodle2.png"
+  alt="Couple doodle"
+  width={180}
+  height={150}
+  priority
+  className="drop-shadow-2xl"
+  style={{ height: "auto" }}
+/>
 
-  </div>
+<p className="mt-3 inline-block px-3 py-1 
+  bg-white/70 backdrop-blur-md 
+  text-gray-700 text-sm italic font-serif 
+  rounded-full shadow">
+  let's celebrate ❤️
+</p>
+
+</div>
 </div>
         {/* ================= DAY PROGRAMME (Section 4) ================= */}
         <section className="bg-[#f7ecd0] py-16 px-4 text-center overflow-hidden relative">
