@@ -156,7 +156,7 @@ export default function Invitation() {
     <div className="min-h-screen w-full font-sans overflow-x-hidden">
       <main className="flex flex-col">
 
-        <section className="min-h-screen bg-gray-900 flex items-center justify-center relative overflow-hidden">
+      <section className="min-h-[100dvh] pb-10 bg-gray-900 flex items-center justify-center relative overflow-hidden">
 
           {/* Background Video */}
           <video
@@ -164,7 +164,7 @@ export default function Invitation() {
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-30 pointer-events-none"
+            className="absolute inset-0 w-full h-[100dvh] object-cover opacity-30 pointer-events-none"
           >
             <source src="/my.mp4" type="video/mp4" />
           </video>
