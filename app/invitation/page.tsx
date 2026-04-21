@@ -156,7 +156,7 @@ export default function Invitation() {
     <div className="min-h-screen w-full font-sans overflow-x-hidden">
       <main className="flex flex-col">
 
-      <section className="h-[100dvh] bg-gray-900 flex items-center justify-center relative overflow-hidden">
+      <section className="h-[100svh] bg-gray-900 flex items-center justify-center relative overflow-hidden">
 
           {/* Background Video */}
           <video
@@ -164,8 +164,8 @@ export default function Invitation() {
   loop
   muted
   playsInline
-  className="fixed top-0 left-0 w-screen h-screen object-cover opacity-30 pointer-events-none z-0"
-  style={{ transform: "translateZ(0)" }}
+  className="absolute top-0 left-0 w-full h-full object-cover opacity-30 pointer-events-none"
+style={{ minHeight: '100%', minWidth: '100%' }}
 >
   <source src="/my.mp4" type="video/mp4" />
 </video>
