@@ -160,16 +160,17 @@ export default function Invitation() {
 
           {/* Background Video */}
           <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-[100dvh] object-cover opacity-30 pointer-events-none"
-          >
-            <source src="/my.mp4" type="video/mp4" />
-          </video>
+  autoPlay
+  loop
+  muted
+  playsInline
+  className="fixed top-0 left-0 w-screen h-screen object-cover opacity-30 pointer-events-none z-0"
+  style={{ transform: "translateZ(0)" }}
+>
+  <source src="/my.mp4" type="video/mp4" />
+</video>
 
-          <div className="absolute inset-0 bg-black/30 z-0" />
+          <div className="absolute inset-0 bg-black/30 z-10" />
 
           {/* 3D Model */}
           <div className="
