@@ -359,7 +359,7 @@ style={{ minHeight: '100%', minWidth: '100%' }}
       className="max-w-[220px] md:max-w-[300px] drop-shadow-2xl"
     />
 
-    <p className="mt-3 inline-block px-3 py-1 bg-white/80 text-gray-700 text-sm italic font-serif rounded-full shadow">
+    <p className="mt-3 inline-block px-3 py-1 bg-white/50 text-gray-700 text-sm italic font-serif rounded-full shadow">
       That’s us ❤️
     </p>
 
@@ -490,9 +490,7 @@ style={{ minHeight: '100%', minWidth: '100%' }}
   style={{ height: "auto" }}
 />
 
-<p className="mt-3 inline-block px-3 py-1 
-  bg-white/70 backdrop-blur-md 
-  text-gray-700 text-sm italic font-serif 
+<p className="mt-3 inline-block px-3 py-1 bg-white/50 text-gray-700 text-sm italic font-serif 
   rounded-full shadow">
   let's celebrate ❤️
 </p>
