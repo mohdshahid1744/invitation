@@ -164,7 +164,7 @@ export default function Invitation() {
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-[100dvh] object-cover opacity-30 pointer-events-none"
+            className="absolute inset-0 w-full h-full object-cover opacity-30 pointer-events-none"
           >
             <source src="/my.mp4" type="video/mp4" />
           </video>
