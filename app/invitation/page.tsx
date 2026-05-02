@@ -1,13 +1,23 @@
 'use client';
 
-import { useEffect, useState, useRef, Suspense } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Bounds, Environment, OrbitControls } from '@react-three/drei';
-import * as THREE from 'three';
-import { Model3D } from '../components/Model3D';
+import { useEffect, useState, useRef } from 'react';
+import dynamic from 'next/dynamic';
 import { getAudio } from '../utils/audio';
-import FlipCard from './flipCard';
-import Image from "next/image";
+import Image from 'next/image';
+
+const InvitationHero3D = dynamic(() => import('./InvitationHero3D'), {
+  ssr: false,
+  loading: () => null,
+});
+
+const FlipCard = dynamic(() => import('./flipCard'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex min-h-[140px] items-center justify-center">
+      <span className="text-sm font-serif italic text-[#E8E2D6]/80">…</span>
+    </div>
+  ),
+});
 function useCountdown(targetDate: Date) {
   const [timeLeft, setTimeLeft] = useState<{
     days: number;
@@ -82,29 +92,31 @@ function useScrollAnimation() {
   return { ref, isVisible };
 }
 
+function useDeferredMount(delayMs = 400) {
+  const [ready, setReady] = useState(false);
 
-function AutoRotate({
-  children,
-  isMobile,
-}: {
-  children: React.ReactNode;
-  isMobile: boolean;
-}) {
-  const ref = useRef<THREE.Group>(null);
+  useEffect(() => {
+    let cancelled = false;
+    const run = () => {
+      if (!cancelled) setReady(true);
+    };
 
-  useFrame((_, delta) => {
-    if (ref.current) ref.current.rotation.y += delta * 0.2;
-  });
+    if (typeof requestIdleCallback !== 'undefined') {
+      const id = requestIdleCallback(run, { timeout: delayMs });
+      return () => {
+        cancelled = true;
+        cancelIdleCallback(id);
+      };
+    }
 
-  return (
-    <group
-      ref={ref}
-      scale={isMobile ? 1.4 : 1.2}
-position={isMobile ? [0, -0.5, 0] : [0, 0, 0]}
-    >
-      {children}
-    </group>
-  );
+    const t = window.setTimeout(run, Math.min(delayMs, 300));
+    return () => {
+      cancelled = true;
+      clearTimeout(t);
+    };
+  }, [delayMs]);
+
+  return ready;
 }
 
 
@@ -127,6 +139,7 @@ export default function Invitation() {
 
   const namesRef = useScrollAnimation();
   const countdownRef = useScrollAnimation();
+  const showHero3D = useDeferredMount(500);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -164,6 +177,7 @@ export default function Invitation() {
   loop
   muted
   playsInline
+  preload={isMobile ? 'metadata' : 'auto'}
   className="absolute top-0 left-0 w-full h-full object-cover opacity-30 pointer-events-none"
 style={{ minHeight: '100%', minWidth: '100%' }}
 >
@@ -181,29 +195,7 @@ style={{ minHeight: '100%', minWidth: '100%' }}
   opacity-70 md:opacity-100
 ">
             
-            <Canvas
-  style={{ pointerEvents: 'none' }}
-  dpr={[1, 1.5]}
-  gl={{ preserveDrawingBuffer: true }}
-  camera={{
-    fov: 45,
-    position: isMobile ? [0, 0, 7] : [0, 0, 6],
-  }}
->
-                <Suspense fallback={null}>
-                  <ambientLight intensity={0.5} />
-                  <directionalLight position={[10, 10, 5]} intensity={1} />
-
-                  <Bounds fit clip margin={1.2}>
-                    <AutoRotate isMobile={isMobile}>
-                      <Model3D />
-                    </AutoRotate>
-                  </Bounds>
-
-                  <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
-                  <Environment preset="sunset" />
-                </Suspense>
-              </Canvas>
+            {showHero3D && <InvitationHero3D isMobile={isMobile} />}
             
           </div>
 
@@ -312,7 +304,7 @@ style={{ minHeight: '100%', minWidth: '100%' }}
       For the most special day of our lives
     </p>
 
-    {timeLeft && (
+    {timeLeft && countdownRef.isVisible && (
       <div className="flex justify-center">
         
         <div className="w-full max-w-[260px] rounded-2xl px-8 py-10 ">
