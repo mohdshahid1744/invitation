@@ -173,10 +173,6 @@ export default function Invitation() {
     rootMargin: '64px',
     initialInView: true,
   });
-  const { ref: mapBlockRef, inView: mapBlockInView } = useIntersectionRef<HTMLDivElement>({
-    rootMargin: '48px',
-    initialInView: false,
-  });
 
   useEffect(() => {
     const v = heroVideoRef.current;
@@ -481,50 +477,20 @@ style={{ minHeight: '100%', minWidth: '100%' }}
               </div>
             </div>
 
-            {/* Map: embed is heavy; mobile = open in app only; desktop = mount iframe only while near viewport */}
-            <div ref={mapBlockRef} className="relative">
-              {isMobile ? (
-                <a
-                  href={mapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex min-h-[14rem] w-full flex-col items-center justify-center gap-2 bg-[#d9f5ea] px-6 py-10 text-center text-[#2E6B5B] shadow-inner transition hover:bg-[#c8f0de]"
-                >
-                  <svg
-                    className="h-10 w-10"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    aria-hidden
-                  >
-                    <path d="M12 21s-6-4.35-6-10a6 6 0 0 1 12 0c0 5.65-6 10-6 10z" />
-                    <circle cx="12" cy="11" r="2" />
-                  </svg>
-                  <span className="text-base font-serif">Open in Google Maps</span>
-                </a>
-              ) : (
-                <>
-                  <a
-                    href={mapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="absolute top-3 left-3 z-10 rounded-full bg-white/90 px-4 py-2 text-xs md:text-sm text-[#2E6B5B] shadow hover:bg-white"
-                  >
-                    Open in Maps ↗
-                  </a>
-                  <div className="h-80 w-full bg-[#eef8f3]">
-                    {mapBlockInView ? (
-                      <iframe
-                        title="Venue map"
-                        src={mapsEmbedUrl}
-                        className="h-full w-full"
-                        loading="lazy"
-                      />
-                    ) : null}
-                  </div>
-                </>
-              )}
+            <div className="relative">
+              <a
+                href={mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-3 left-3 z-10 rounded-full bg-white/90 px-4 py-2 text-xs md:text-sm text-[#2E6B5B] shadow hover:bg-white"
+              >
+                Open in Maps ↗
+              </a>
+              <iframe
+                title="Venue map"
+                src={mapsEmbedUrl}
+                className="h-56 w-full md:h-80"
+              />
             </div>
 
           </div>
