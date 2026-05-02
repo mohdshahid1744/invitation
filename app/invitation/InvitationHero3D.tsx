@@ -36,7 +36,6 @@ export default function InvitationHero3D({ isMobile }: { isMobile: boolean }) {
       style={{ pointerEvents: 'none' }}
       dpr={isMobile ? [1, 1] : [1, 1.5]}
       gl={{
-        preserveDrawingBuffer: true,
         powerPreference: 'low-power',
         antialias: !isMobile,
       }}
